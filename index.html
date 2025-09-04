@@ -1,0 +1,174 @@
+Project Brief — DooPlay-style Static Website (for Vercel)
+
+Goal: Build a complete static website (NOT a mobile/desktop application) that visually and functionally clones the demo site https://demo.ews.pe/dooplay/. The site must be production-ready for hosting on Vercel and must read movie/TV IDs from a runtime JSON file (no database required).
+
+High-level requirements
+
+Static site: HTML/CSS/JS only (or a static framework like Next.js exported as static), deployable to Vercel as a static site. If serverless helpers are used they must be minimal and optional.
+
+Pages to include (match the demo behavior & navigation):
+
+Home / Featured (index.html)
+
+Movies listing (movies.html)
+
+TV listing (tv.html)
+
+Popular (popular.html)
+
+Top (top.html)
+
+Genres (genres.html)
+
+Year filter (year.html)
+
+Search (search.html)
+
+Movie detail (movie-detail.html)
+
+TV detail (tv-detail.html)
+
+Watch / player (watch.html)
+
+404 page
+
+JSON-driven content: All lists must be populated from a single JSON file in the repository (example: /data/content.json) that contains items with at minimum:
+
+type: "movie" or "tv"
+
+id: TMDb numeric ID
+
+optional: year, link (player url or m3u8), poster_path (override), title (override)
+
+TMDb integration:
+
+When a TMDb key is provided, the client should fetch details (title, poster, overview, rating, backdrop) using the TMDb API and enrich entries at runtime.
+
+Provide two secure options in the deliverable and implementation:
+
+Option A (simple): Client-side TMDb key set in a public file (assets/js/config.js) — clearly document security implications.
+
+Option B (recommended): Optional Vercel serverless function /api/tmdb?type=movie&id=... that proxies requests to TMDb using a Vercel environment variable TMDB_API_KEY, keeping the API key secret. The site should work with either option.
+
+Watch player behavior:
+
+If a link exists in JSON for an item, watch.html?type=movie&id=... must load that link in a player (iframe or HTML5 <video> depending on link type).
+
+If no link is present, show a friendly message and provide a button linking to the TMDb page.
+
+Routing & links:
+
+Detail pages: movie-detail.html?id=603 and tv-detail.html?id=1399.
+
+Watch page: watch.html?type=movie&id=603.
+
+UX & design:
+
+Recreate the demo layout and style (dark theme, hero, poster grid, sidebars, cards).
+
+Responsive: mobile, tablet, desktop.
+
+Use lazy-loaded images and accessible semantic HTML.
+
+Project structure (required)
+
+/ (root)
+├─ index.html
+├─ movies.html
+├─ tv.html
+├─ popular.html
+├─ top.html
+├─ genres.html
+├─ year.html
+├─ search.html
+├─ movie-detail.html
+├─ tv-detail.html
+├─ watch.html
+├─ 404.html
+├─ assets/
+│  ├─ css/style.css
+│  ├─ js/config.js        (holds fallback or build-time TMDB key)
+│  ├─ js/utils.js
+│  ├─ js/api.js          (client TMDb wrapper or calls to /api)
+│  ├─ js/dataLoader.js
+│  └─ js/render.js
+├─ data/
+│  └─ content.json
+├─ api/ (optional Vercel serverless)
+│  └─ tmdb.js    // path: /api/tmdb
+├─ README.md
+└─ vercel.json (optional)
+
+
+Vercel deployment notes:
+
+Provide a README.md with exact steps to deploy on Vercel:
+
+Push to GitHub repo.
+
+Connect repo to Vercel.
+
+Add an Environment Variable TMDB_API_KEY (if using serverless option).
+
+Set Build & Output Settings if necessary (for static: output directory /).
+
+If using Next.js static export, include vercel.json and build scripts.
+
+Deliverables
+
+A single ZIP with the full static site (or a GitHub repo link).
+
+data/content.json example (see below).
+
+README.md with: how to run locally (VSCode Live Server or python -m http.server), Vercel deploy instructions, how to add TMDb key, how to add player links, and notes about CORS/security.
+
+Optional: minimal serverless /api/tmdb function for hiding the TMDb key.
+
+Data / JSON example (exact file /data/content.json)
+
+{
+  "featured": [
+    { "type": "movie", "id": 603, "year": 1999, "link": "https://cdn.example.com/matrix.mp4" },
+    { "type": "movie", "id": 155, "year": 2008 },
+    { "type": "tv", "id": 1399, "year": 2011 }
+  ],
+  "movies": [
+    { "type": "movie", "id": 238, "year": 1972 },
+    { "type": "movie", "id": 680, "year": 1994, "link": "https://cdn.example.com/fightclub.m3u8" }
+  ],
+  "tv": [
+    { "type": "tv", "id": 66732, "year": 2016 },
+    { "type": "tv", "id": 456, "year": 1989 }
+  ],
+  "genres": [
+    { "id": 28, "name": "Action" },
+    { "id": 35, "name": "Comedy" }
+  ]
+}
+
+
+Acceptance criteria
+
+All pages render with content from /data/content.json.
+
+When TMDB_API_KEY is provided (client or serverless), the site fetches and displays poster, overview, rating and backdrop images.
+
+watch.html loads item link if present.
+
+Deployable to Vercel with instructions; environment variable usage documented.
+
+Extras (nice-to-have)
+
+Search suggestions/autocomplete.
+
+Pagination for long lists.
+
+Lazy-loading placeholders & skeleton UI.
+
+Basic SEO meta tags and open graph tags for detail pages.
+
+License & notes
+
+The deliverable must be original code (no direct copy of proprietary code). Recreate the look and behavior for learning/educational purposes only.
+
+Provide clear README and comments.
