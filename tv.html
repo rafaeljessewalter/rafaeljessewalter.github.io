@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DooClone</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://image.tmdb.org" />
+
+  <title>Séries • DooClone</title>
+</head>
+<body data-page="tv">
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo">Doo<span>Clone</span></a>
+    <nav class="nav">
+      <a href="index.html">Início</a>
+      <a href="movies.html">Filmes</a>
+      <a href="tv.html">Séries</a>
+      <a href="popular.html">Populares</a>
+      <a href="top.html">Top IMDB</a>
+      <a href="genres.html">Gêneros</a>
+      <a href="year.html">Ano</a>
+      <a href="search.html">Buscar</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="section">
+    <div class="toolbar"><h2 style="margin:0">Séries</h2></div>
+    <div id="list-grid" class="grid"></div>
+    <div class="pager"><a href="#">Anterior</a><a href="#">Próxima</a></div>
+  </section>
+  
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <p>© 2025 DooClone. Template inspirado no tema DooPlay para fins educacionais.</p>
+  </div>
+</footer>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/dataLoader.js"></script>
+  <script src="assets/js/render.js"></script>
+
+
+<script>document.addEventListener("DOMContentLoaded",()=>{ initTV().catch(console.error) });</script>
+
+</body>
+</html>
