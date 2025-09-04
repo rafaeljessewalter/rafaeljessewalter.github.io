@@ -1,13 +1,13 @@
 {
   "featured": [
-    { "type": "movie", "id": 603, "year": 1999, "link": "https://meuservidor.com/matrix.mp4" },
+    { "type": "movie", "id": 1007734, "year": 2025, "link": "https://meuservidor.com/matrix.mp4" },
     { "type": "movie", "id": 155, "year": 2008, "link": "https://meuservidor.com/batman.mp4" },
     { "type": "tv", "id": 1399, "year": 2011, "link": "https://meuservidor.com/gameofthrones/season1ep1.m3u8" },
     { "type": "tv", "id": 66732, "year": 2016 },
     { "type": "movie", "id": 27205, "year": 2010 }
   ],
   "movies": [
-    { "type": "movie", "id": 238, "year": 1972 },  
+    { "type": "movie", "id": 1007734, "year": 2025 },  
     { "type": "movie", "id": 680, "year": 1994 },
     { "type": "movie", "id": 122, "year": 2003 },
     { "type": "movie", "id": 497, "year": 1998 },
@@ -19,7 +19,7 @@
     { "type": "movie", "id": 155, "year": 2008 }
   ],
   "tv": [
-    { "type": "tv", "id": 1399, "year": 2011 },
+    { "type": "tv", "id": 119051, "year": 2022 },
     { "type": "tv", "id": 66732, "year": 2016 },
     { "type": "tv", "id": 456, "year": 1989 },
     { "type": "tv", "id": 60625, "year": 2014 },
@@ -29,7 +29,7 @@
     { "type": "tv", "id": 1416, "year": 2005 }
   ],
   "genres": [
-    { "id": 28, "name": "Ação" },
+    { "id": 1007734, "name": "Ação" },
     { "id": 35, "name": "Comédia" },
     { "id": 18, "name": "Drama" },
     { "id": 27, "name": "Terror" }
